@@ -1,0 +1,30 @@
+<div class="container">
+
+    <div class="col-md-3" >
+       <h3>Famous stadiums </h3> 
+<input (keyup)=" searchStadium()" [(ngModel)]="searchText"  class="form-control" type="text" placeholder="search stadium...">
+   <br/>
+     
+    <ul class="list-group">
+      <li  *ngFor="let rs of resSearch" 
+           class="list-group-item clickable mt-10"
+           (click)="getDetailStade(rs)">
+           {{rs.name}} 
+    </li>
+    </ul>
+    </div>
+  
+
+    <div class="col-md-9" >
+ <div *ngIf="stade" >
+        <h3>Name: {{stade.name}}</h3>
+        <h3>City: {{stade.city}}</h3>
+        <h3>Attendence :{{stade.attendence}}</h3>
+    
+        <img src="{{this.foootServ.host+'/photoStadium/'+stade.id}}" width="300" height="200" >
+
+ </div>
+     
+
+
+</div>

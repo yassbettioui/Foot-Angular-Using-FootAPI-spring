@@ -1,0 +1,47 @@
+
+<div>
+  <div class="col-md-2">
+  <ul *ngIf="ligues" class="list-group">
+    <li  *ngFor="let l of ligues._embedded.leagues" 
+     [ngClass]="l===currentLeague?'active':''"
+         class="list-group-item clickable"
+        (click)="onGetClubs(l)" >
+        <img src="assets/Flags/{{l.country}}.png" class="img-thumbnail img-circle" height="30" width="30">
+
+        {{l.name}} </li>
+  </ul>
+</div>
+  
+
+  <div class="col-md-10">
+    <ul *ngIf="clubs" class="nav nav-pills">
+      <li  *ngFor="let c of clubs._embedded.clubs"
+           [ngClass]="c===currentClub?'active':''"
+           class="list-group-item clickable width:120px"
+          (click)="onGetPlayers(c)" >
+     <img src="{{this.foootServ.host+'/photoClub/'+c.id}}" width="65" height="65" >
+    </li>
+    </ul>
+  </div>
+<div class="col-md-3">
+  <ul *ngIf="players" class="list-group"> <h4>Players : </h4>
+    <button class="btn btn-primary btn-block">Add Player</button><br>
+    <li *ngFor="let p of players._embedded.players" 
+    class="list-group-item" 
+    [ngClass]="p===currentPlayer?'active':''"
+    (click)="getDetailPlayer(p)">
+    <img src="assets/Flags/{{p.firstNationality}}.png" class="img-thumbnail img-circle" height="40" width="40">
+    <span> {{p.fullName}}</span>
+ 
+    </li>
+  </ul>
+
+  </div>
+  
+<div class="col-md-7" *ngIf="player">
+<h2>Player profil:</h2>
+<h4>{{player.fullName}} </h4>
+<h5>{{player.position}}</h5>
+</div>
+</div>
+

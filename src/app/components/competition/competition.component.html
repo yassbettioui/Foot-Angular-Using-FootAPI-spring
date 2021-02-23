@@ -1,0 +1,28 @@
+
+
+  <div class="col-md-12">
+    <ul *ngIf="confederations" class="nav nav-pills">
+      <li  *ngFor="let cf of confederations._embedded.confederations" 
+       [ngClass]="cf==currentConf?'active':''"
+           class="list-group-item clickable"
+          (click)="onGetComp(cf)" >{{cf.abreviation}} </li>
+    </ul>
+    </div>
+    
+    <div class="col-md-4">
+      <ul *ngIf="competitions" class="list-group"> <h4>Competitions : </h4>
+        <li  *ngFor="let cp of competitions._embedded.competitions"
+             [ngClass]="cp==currentComp?'active':''"
+             class="list-group-item clickable"
+            (click)="onGetTourn(cp)" >{{cp.name}} 
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-8">
+    <ul *ngIf="tournements" class="list-group"> <h4>Tournements : </h4>
+      <li *ngFor="let t of tournements._embedded.tournements" 
+      class="list-group-item" ><h3>{{t.name}}</h3>
+     </li>
+    </ul>
+    </div>
+  
